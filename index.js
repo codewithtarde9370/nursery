@@ -129,6 +129,13 @@ app.delete('/plant/:id', (req, res) => {
   });
 });
 
+app.use("*", (req,res) => {
+res.send(`<div>
+  <h1 style="text-align:center;">404: NOT FOUND <h1/>
+  </div>
+  `)
+})
+
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
