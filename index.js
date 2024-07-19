@@ -1,4 +1,8 @@
 import express from 'express';
+import dotenv from 'dotenv';
+
+dotenv.config()
+
 const app = express();
 app.use(express.json());
 
@@ -26,7 +30,7 @@ const plants = [
   }
 ];
 
-// POST route to add a new plant
+//1. POST route to add a new plant
 app.post("/plant", (req, res) => {
   const { name, price, image, description } = req.body;
 
@@ -56,7 +60,7 @@ app.post("/plant", (req, res) => {
   });
 });
 
-//1. GET route to retrieve all plants
+//2. GET route to retrieve all plants
 app.get("/plants", (req, res) => {
   res.json({
     success: true,
@@ -64,7 +68,7 @@ app.get("/plants", (req, res) => {
   });
 });
 
-//2. GET route to retrieve a specific plant by ID
+//3. GET route to retrieve a specific plant by ID
 app.get("/plant/:id", (req, res) => {
   const { id } = req.params;
   const plant = plants.find(p => p.id == id);
@@ -83,7 +87,7 @@ app.get("/plant/:id", (req, res) => {
   });
 });
 
-//3. PUT route to update a plant by ID
+//4. PUT route to update a plant by ID
 app.put("/plant/:id", (req, res) => {
   const { id } = req.params;
   const { name, price, image, description } = req.body;
@@ -105,7 +109,7 @@ app.put("/plant/:id", (req, res) => {
   });
 });
 
-//4. DELETE route to delete a plant by ID
+//5. DELETE route to delete a plant by ID
 app.delete('/plant/:id', (req, res) => {
   const { id } = req.params; // Get the plant ID from the request parameters
   const plantIndex = plants.findIndex(p => p.id == id); // Find the index of the plant
@@ -125,7 +129,7 @@ app.delete('/plant/:id', (req, res) => {
   });
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
