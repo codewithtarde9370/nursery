@@ -30,6 +30,16 @@ const plants = [
   }
 ];
 
+// health API to check if server is working properly
+
+app.get("/health", (req,res) => {
+  res.json({
+    success:true,
+    message:"server is running successfully, API connected👍"
+  } 
+  )  
+})
+
 //1. POST route to add a new plant
 app.post("/plant", (req, res) => {
   const { name, price, image, description } = req.body;
