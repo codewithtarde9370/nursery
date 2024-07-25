@@ -3,70 +3,70 @@
       "id": 1,
       "name": "Pink Rose",
       "price": 599,
-      "image": "https://images.unsplash.com/photo-1508873699372-7ae7d1295a18",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJaiSYX3_5bI0fHLwfcZU1J3ich5sz2IKO8w&s",
       "description": "A beautiful pink rose"
     },
     {
       "id": 2,
       "name": "Red Tulip",
       "price": 629,
-      "image": "https://images.unsplash.com/photo-1561573961-2d8651a56a29",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlDbJaeAY3x0E3zbtb8fxtcExAj3WV_AEZUQ&s",
       "description": "A stunning red tulip"
     },
     {
       "id": 3,
       "name": "White Lily",
       "price": 649,
-      "image": "https://images.unsplash.com/photo-1561574004-51c26d22cf4e",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT87yGDM4uzB09OuHvRsmBaRioQBU0grlifZg&s",
       "description": "A pure white lily"
     },
     {
       "id": 4,
       "name": "Yellow Daffodil",
       "price": 599,
-      "image": "https://images.unsplash.com/photo-1561573720-300acb7a8019",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW0IKXh9M_bOvASy7tLXq5awnTcaFTMn6QpQ&s",
       "description": "A bright yellow daffodil"
     },
     {
       "id": 5,
       "name": "Purple Orchid",
       "price": 619,
-      "image": "https://images.unsplash.com/photo-1524549208171-8b9d33019d3d",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlOuWknkyspzsLaQ9nWqFgTpsMLtwxG60rnQ&s",
       "description": "An elegant purple orchid"
     },
     {
       "id": 6,
       "name": "Blue Hydrangea",
       "price": 579,
-      "image": "https://images.unsplash.com/photo-1514262500972-a31f1625bc10",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQun_eRgsyqyNMbeVC2BsAPC3qK4pF0l0yPyw&s",
       "description": "A charming blue hydrangea"
     },
     {
       "id": 7,
       "name": "Orange Marigold",
       "price": 509,
-      "image": "https://images.unsplash.com/photo-1561574104-9db4ffcb3b5e",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPgh8UQfopVQCnI-9Db2YqH-7ZzA8Mw0j01w&s",
       "description": "A vibrant orange marigold"
     },
     {
       "id": 8,
       "name": "Pink Peony",
       "price": 689,
-      "image": "https://images.unsplash.com/photo-1526675333250-0e5176f47a8d",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrNWmoM1XHYyKGBoF1mgQTrjtacVS1K5o3YA&s",
       "description": "A delicate pink peony"
     },
     {
       "id": 9,
       "name": "White Jasmine",
       "price": 559,
-      "image": "https://images.unsplash.com/photo-1526604646054-50c46c5d2e1a",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrNWmoM1XHYyKGBoF1mgQTrjtacVS1K5o3YA&s",
       "description": "A fragrant white jasmine"
     },
     {
       "id": 10,
       "name": "Red Poppy",
       "price": 539,
-      "image": "https://images.unsplash.com/photo-1561574528-16b43a3a1e55",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ82LHCMkdbSxeIECbZwpnCOcRJLsFqqV-FA&s",
       "description": "A vivid red poppy"
     }
   ]
@@ -102,11 +102,15 @@ const postPlants=(req, res) => {
       message: "New plant added successfully",
     });
 }
-const getPlants= (req, res) => res.json({
+const getPlants= async (req, res) => {
+  const allPlants = await Plant.find().sort({createdAt: -1})
+  
+  res.json({
+
       success: true,
       data:plants,
       message:"heyy Tejasvi, plants are fetched successfully"
-    });
+    });}
   
  const getPlant= (req, res) => {
     const { id } = req.params;
