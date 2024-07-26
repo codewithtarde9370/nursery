@@ -1,5 +1,4 @@
-import { Description } from "@mui/icons-material";
-import {Schema, module} from "mongoose";
+import {Schema, model} from "mongoose";
 
 const plantSchema = new Schema({
     name:String,
